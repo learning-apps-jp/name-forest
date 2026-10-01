@@ -1,4 +1,4 @@
-const CACHE='name-forest-v2';
+const CACHE='name-forest-v3';
 const FILES=['./','./index.html','./style.css','./engine.js','./app.js','./icon.svg','./icon-192.png','./icon-512.png','./manifest.webmanifest'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('name-forest-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
